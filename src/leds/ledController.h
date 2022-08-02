@@ -7,11 +7,14 @@
 #include "consts.h"
 
 class LedController {
+  private:
+    CRGB leds[NUM_LEDS];
+    State *state_;
+    long updateMillis;
+
   protected:
     LedController(State*);
     static LedController* controller_;
-    State *state_;
-    CRGB leds[NUM_LEDS];
 
   public:
     static LedController *getInstance(State*);
@@ -19,6 +22,7 @@ class LedController {
     LedController(LedController &other) = delete;
     State* getState();
     void setState(State* s);
-    void changeLeds();
+    void run();
+    void update();
 };
 #endif

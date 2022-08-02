@@ -5,10 +5,12 @@
 #include "leds/ledController.h"
 #include "leds/states/fullColorState.cpp"
 
+LedController* ledController_;
+
 void setup() {
-  LedController* controller = LedController::getInstance(new FullColorState());
+  ledController_ = LedController::getInstance(new FullColorState());
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  ledController_->run();
 }

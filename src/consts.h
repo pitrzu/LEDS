@@ -1,10 +1,8 @@
 #pragma once
 #ifndef CONSTS_H
 #define CONSTS_H
-#include "FastLED.h"
-
-const int NUM_LEDS = 818;
-const int DATA_PIN = 13;
-const EOrder COLOR_ORDER = GRB;
-
+#define NUM_LEDS 818
+#define LED_PIN 13
+#define LED_ORDER GRB
+#define LED_CONTROLLER WS2813
 #endif
