@@ -1,7 +1,6 @@
 #pragma once
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
-
+#ifndef L_CONTROLLER_H
+#define L_CONTROLLER_H
 #include <FastLED.h>
 #include "states/state.h"
 #include "consts.h"
@@ -11,6 +10,7 @@ class LedController {
     CRGB leds[NUM_LEDS];
     State *state_;
     long updateMillis;
+    int offset;
 
   protected:
     LedController(State*);

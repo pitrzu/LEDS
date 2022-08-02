@@ -5,6 +5,7 @@ LedController* LedController::controller_ = nullptr;
 LedController::LedController(State* s){
   FastLED.addLeds<LED_CONTROLLER, LED_PIN, LED_ORDER>(this->leds, NUM_LEDS); 
   this->setState(s);
+  this->offset = 0;
 }
 
 LedController *LedController::getInstance(State* s) {
@@ -21,15 +22,6 @@ State *LedController::getState(){
 }
 
 void LedController::run(){
-  std::array<CRGB, NUM_LEDS> returnedLeds = this->state_->changeLeds();
-  for(int i = 0; i < NUM_LEDS; i++){
-    this->leds[i] = returnedLeds[i];
-  }
-  this->update();
+  this->state_->changeLeds(this->leds);
 }
 
-void LedController::update(){
-  if(millis() - this->updateMillis < this->state_->getMillis()) return;
-  this->updateMillis = millis();
-  FastLED.show();
-}

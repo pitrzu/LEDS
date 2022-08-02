@@ -9,16 +9,21 @@ class State{
   protected:
     std::array<CRGB, NUM_LEDS> leds;
     int h, s, v;
-    long millis;
+    long waitMillis, updateMillis;
   public:
     State(){}
-    State(int h, int s, int v, long millis){
+    State(int h, int s, int v, long waitMillis){
       this->h = h;
       this->s = s;
       this->v = v;
-      this->millis = millis;
+      this->waitMillis = waitMillis;
+      this->updateMillis = millis();
     }
-    virtual std::array<CRGB, NUM_LEDS> changeLeds() = 0;
-    virtual long getMillis() = 0;
+    virtual void changeLeds(CRGB* leds){}
+    void update(){
+      if(millis() - this->updateMillis < this->waitMillis) return;
+      this->updateMillis = millis();
+      FastLED.show();
+    }
 };
 #endif
