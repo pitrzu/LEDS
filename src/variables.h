@@ -1,5 +1,8 @@
 #pragma once
 #ifndef VARIABLES_H
 #define VARIABLES_H
-extern int function;
+#include "leds/ledController.h"
+
+extern LedController* ledController_;
+
 #endif
