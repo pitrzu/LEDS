@@ -7,6 +7,7 @@
 #include "leds/states/fullColorState.h"
 #include "leds/states/rainbowState.h"
 #include "leds/states/pulseState.h"
+#include "leds/states/blackState.h"
 
 AsyncWebServer server(80);
 
@@ -17,7 +18,8 @@ ServerController::ServerController(){
   WiFi.begin(env::SSID, env::PASSWORD);
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(200, "text/plain", "Hello, world");  
+    ledController_->setState(new BlackState());
+    request->send(200, "text/plain", "Changed to black");  
   });
   server.on("/fill", HTTP_GET, [](AsyncWebServerRequest *request){
     int h = 0, s = 255;
