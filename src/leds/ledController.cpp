@@ -3,7 +3,7 @@
 LedController* LedController::controller_ = nullptr;
 
 LedController::LedController(State* s){
-  FastLED.addLeds<LED_CONTROLLER, LED_PIN, LED_ORDER>(this->leds, NUM_LEDS); 
+  FastLED.addLeds<LED_CONTROLLER, LED_PIN, LED_ORDER>(this->leds, NUM_LEDS).setTemperature(HighNoonSun).setCorrection(Typical8mmPixel);
   this->setState(s);
   this->offset = 0;
 }

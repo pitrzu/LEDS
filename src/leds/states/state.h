@@ -23,6 +23,7 @@ class State{
     void update(){
       if(millis() - this->updateMillis < this->waitMillis) return;
       this->updateMillis = millis();
+      if(abs8(floor(analogRead(34)/16) - v) > 4 ) v = floor(analogRead(34)/16);
       FastLED.show();
     }
 };

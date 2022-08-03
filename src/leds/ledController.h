@@ -21,8 +21,9 @@ class LedController {
     void operator=(const LedController &) = delete;
     LedController(LedController &other) = delete;
     State* getState();
-    void setState(State* s);
+    void setState(State*);
     void run();
     void update();
+    void setValue(int);
 };
 #endif
