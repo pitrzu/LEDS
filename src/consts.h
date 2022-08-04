@@ -5,4 +5,6 @@
 #define LED_PIN 15
 #define LED_ORDER GRB
 #define LED_CONTROLLER WS2813
+#define SDA_PIN 18
+#define SDL_PIN 21
 #endif

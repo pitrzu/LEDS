@@ -19,7 +19,7 @@ ServerController::ServerController(){
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     ledController_->setState(new BlackState());
-    request->send(200, "text/plain", "Changed to black");  
+    request->send(200, "text/plain", "Turned off the leds");  
   });
   server.on("/fill", HTTP_GET, [](AsyncWebServerRequest *request){
     int h = 0, s = 255;

@@ -9,8 +9,6 @@ class LedController {
   private:
     CRGB leds[NUM_LEDS];
     State *state_;
-    long updateMillis;
-    int offset;
 
   protected:
     LedController(State*);
@@ -20,10 +18,7 @@ class LedController {
     static LedController *getInstance(State*);
     void operator=(const LedController &) = delete;
     LedController(LedController &other) = delete;
-    State* getState();
     void setState(State*);
     void run();
-    void update();
-    void setValue(int);
 };
 #endif
