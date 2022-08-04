@@ -26,7 +26,6 @@ class State{
       if(abs8(floor(analogRead(34)/16) - v) > 4 ) v = floor(analogRead(34)/16);
       FastLED.show();
     }
-
     bool canUpdateLed(){
       if(millis() - this->showMillis < this->showDelay) return false;
       this->showMillis = millis();

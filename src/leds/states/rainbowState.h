@@ -3,8 +3,12 @@
 #include "FastLED.h"
 
 class RainbowState: public State{
+  private:
+    int f;
   public:
-    RainbowState(long millis = 1000/60) : State(0, 255, millis){}
+    RainbowState(int s, int f, long millis = 1000/60) : State(0, s, millis){
+      this->f = f;
+    }
     void changeLeds(CRGB* leds){
       for (int j = 0; j < 255; j++) {
         if(!this->State::canUpdateLed()) {
@@ -12,7 +16,7 @@ class RainbowState: public State{
           continue;
         }
         for (int i = 0; i < NUM_LEDS; i++) {
-          leds[i] = CHSV(i - (j * 2), s, v);
+          leds[i] = CHSV(i - (j * f), s, v);
         }
         this->State::show();
       }

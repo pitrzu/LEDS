@@ -4,7 +4,7 @@
 
 class PulseState: public State{
   public:
-    PulseState(long millis = 1000/60) : State(0, 255, millis){}
+    PulseState(int s, long millis = 1000/60) : State(0, s, millis){}
     void changeLeds(CRGB* leds){
       for (int j = 0; j < 255; j++) {
         if(!this->State::canUpdateLed()) {
